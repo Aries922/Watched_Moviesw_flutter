@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "985635935588",
+    "project_id": "watchedmovies-a6a72",
+    "storage_bucket": "watchedmovies-a6a72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:985635935588:android:3e289c5feadb1a9fbc1671",
+        "android_client_info": {
+          "package_name": "com.example.watched_movies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "985635935588-v4prcqd26ppqs74fllan9mv9o34cu0te.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.watched_movies",
+            "certificate_hash": "093971725ca5c3c430c398891a5a50043a6a94bf"
+          }
+        },
+        {
+          "client_id": "985635935588-rrjcrt9uafru6iufaf9df5joi6112ep5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyrEKor-rW4yiRPpI7LQ_ra3rT4D8AP1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "985635935588-rrjcrt9uafru6iufaf9df5joi6112ep5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
