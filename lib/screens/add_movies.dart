@@ -18,6 +18,7 @@ class AddMoviesPage extends StatefulWidget {
 }
 
 class _AddMoviesPageState extends State<AddMoviesPage> {
+  bool isLoading= false;
   String? name, director;
   File? _image;
   final _formKey = GlobalKey<FormState>();
@@ -137,6 +138,10 @@ class _AddMoviesPageState extends State<AddMoviesPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
                       onPressed: () async {
+                      isLoading = true;
+                      setState(() {
+                        
+                      });
                         final MoviesService request =
                             Provider.of<MoviesService>(context, listen: false);
                         final isValid =
@@ -147,26 +152,29 @@ class _AddMoviesPageState extends State<AddMoviesPage> {
                             await request.addMovies(
                                 name: name, director: director, poster: _image);
 
-                            AppSnackbar.of(context)
-                                .success("Sucsessfully Added");
+                  
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => HomePage()),
                                 (route) => false);
                           } on FirebaseException catch (e) {
+                            isLoading = false;
+                      setState(() {
+                        
+                      });
                             return AppSnackbar.of(context)
                                 .error(e.message ?? "");
                           }
                         }
                       },
                       child: Center(
-                        child: Text(
+                        child:!isLoading ? Text(
                           "Add",
                           style: Theme.of(context).textTheme.button!.copyWith(
                               fontSize: 4 * VisualDensity.maximumDensity,
                               color: Colors.white),
-                        ),
+                        ) : Center(child: CircularProgressIndicator(),),
                       ),
                     ),
                   ),

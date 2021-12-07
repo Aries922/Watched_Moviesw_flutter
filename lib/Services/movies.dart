@@ -11,9 +11,6 @@ class MoviesService with ChangeNotifier {
   final firestore = FirebaseFirestore.instance;
   final auth = FirebaseAuth.instance.currentUser;
   String? returnURL;
-  Stream<QuerySnapshot>? moviesList;
-
-  get list => moviesList;
 
   Future<String?> uploadPoster(File? _image) async {
     try {
@@ -54,24 +51,6 @@ class MoviesService with ChangeNotifier {
     });
   }
 
-  Future getMovies(BuildContext context) async {
-    try {
-      final Stream<QuerySnapshot> data = await firestore
-          .collection("users")
-          .doc(auth!.uid)
-          .collection("movies")
-          .get().asStream();
-      print(data);
-      // var alldata = data.docs.map((doc) => doc.data()).toList();
-      moviesList = data;
-      notifyListeners();
-
-      return data;
-    } on FirebaseException catch (e) {
-      return AppSnackbar.of(context).error(e.message ?? "");
-    }
-  }
-
   Future deleteMovie(
     BuildContext context,
     String? docid,
@@ -85,7 +64,6 @@ class MoviesService with ChangeNotifier {
           .delete();
       notifyListeners();
       return AppSnackbar.of(context).success("Deleted");
-
     } on FirebaseException catch (e) {
       return AppSnackbar.of(context).error(e.message ?? "");
     }
